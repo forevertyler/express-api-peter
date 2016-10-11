@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <p></p>
+  <script src="https://npmcdn.com/axios/dist/axios.min.js"></script>
+  <script>
+  var express = require('express')
+  var app = express()
+
+  app.get('/', function (req, res) {
+    res.send('Hello World')
+  })
+
+  app.listen(3000)
+  axios.get('/http://localhost:3000')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  </script>
+</body>
+</html>
