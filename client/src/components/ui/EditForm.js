@@ -20,7 +20,8 @@ export default class EditForm extends React.Component {
     //   content,
     //   category
     // }
-    this.publishPost({title, content, category});
+    console.log({title, content, category});
+    this.props.publishPost({title, content, category});
     //http://babeljs.cn/repl/# you can try es6 Here
   }
    render() {
