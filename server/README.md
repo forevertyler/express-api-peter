@@ -6,3 +6,8 @@ curl -H "Content-Type: application/json" -X POST -d
 ```
 
 参考代码： https://coding.net/u/happypeter/p/react-express-api-demo/git
+
+
+｀｀｀
+node index.js
+```
