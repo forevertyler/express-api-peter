@@ -15,7 +15,7 @@ module.exports = function(app) {
   app.put('/posts/:id', function(req, res) {
     console.log(req.params.id);
     res.json({peter: "hi everyone!"});
-  })
+  })//解决４０４
   app.post('/posts', function(req, res) {
     // res.send('the post title is: ' + req.body.title)
     console.log(req.body);
