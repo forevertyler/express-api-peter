@@ -84,12 +84,12 @@ class EditForm extends Component {
     return (
       <form style={styles.form} onSubmit={this.handleSubmit.bind(this)}>
         <div style={styles.div}>
-          <label style={styles.label}>分类</label>
-          <input style={styles.input} ref='category' defaultValue={this.props.post ? this.props.post.category : ''} />
-        </div>
-        <div style={styles.div}>
           <label style={styles.label}>标题</label>
           <input style={styles.input} ref='title' defaultValue={this.props.post ? this.props.post.title : ''} />
+        </div>
+        <div style={styles.div}>
+          <label style={styles.label}>分类</label>
+          <input style={styles.input} ref='category' defaultValue={this.props.post ? this.props.post.category : ''} />
         </div>
         <div style={styles.div}>
           <label style={styles.label}>内容</label>

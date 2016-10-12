@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import map from 'lodash/fp/map';
 import axios from 'axios';
 import { Link } from 'react-router';
-
+import Settings from '../Settings'
 
 export default class PostList extends Component {
   constructor() {
@@ -63,6 +63,18 @@ export default class PostList extends Component {
         padding:'5px 10px',
         borderRadius:'5px',
         float:"left"
+      },
+      delete:{
+        width:'50px',
+        display:'block',
+        textAlign:'center',
+        textDecoration: 'none',
+        backgroundColor:'#00bcd4',
+        color:'#fff',
+        margin:'10px 0 0 5px',
+        padding:'5px 10px',
+        borderRadius:'5px',
+        float:"center"
       }
     }
   }
@@ -76,6 +88,12 @@ export default class PostList extends Component {
       console.log(this.state.posts);
     });
   }
+  handleClick(value) {
+    // alert(value);
+    axios.delete(`${Settings.host}/posts/${value}`).then(res => {
+      console.log('d');
+    })
+  }
   render() {
     const styles = this.getStyles();
     const postList = map((post) => {
@@ -84,6 +102,7 @@ export default class PostList extends Component {
           <div style={styles.title}>{post.title}</div>
           <Link to={`/posts/${post._id}`} style={styles.check}>CHECK</Link>
           <Link to={`/posts/${post._id}/edit`} style={styles.edit}>编辑</Link>
+          <Link to={``} style={styles.delete} onClick={this.handleClick.bind(this,post._id)}>删除</Link>
 
         </div>
       )
