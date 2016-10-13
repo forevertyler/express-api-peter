@@ -41,19 +41,6 @@ export default class PostList extends Component {
       },
       check:{
         width:'50px',
-        display:'inline-block',
-        // textAlign:'center',
-        textDecoration: 'none',
-        backgroundColor:'#00bcd4',
-        color:'#fff',
-        margin:'10px 0 0 5px',
-        padding:'5px 10px',
-        borderRadius:'5px',
-        float:"right"
-
-      },
-      edit:{
-        width:'50px',
         display:'block',
         textAlign:'center',
         textDecoration: 'none',
@@ -64,17 +51,30 @@ export default class PostList extends Component {
         borderRadius:'5px',
         float:"left"
       },
-      delete:{
+      edit:{
         width:'50px',
         display:'block',
         textAlign:'center',
         textDecoration: 'none',
         backgroundColor:'#00bcd4',
         color:'#fff',
-        margin:'10px 0 0 5px',
+        margin:'10px auto',
         padding:'5px 10px',
         borderRadius:'5px',
-        float:"center"
+      },
+      delete:{
+        clear:'both',
+        width:'50px',
+        display:'inline-block',
+        // textAlign:'center',
+        textDecoration: 'none',
+        backgroundColor:'#00bcd4',
+        color:'#fff',
+        margin:'-45px 5px',
+        padding:'5px 10px',
+        borderRadius:'5px',
+        float:"right"
+
       }
     }
   }
@@ -88,10 +88,20 @@ export default class PostList extends Component {
       console.log(this.state.posts);
     });
   }
+  filterPosts(id){
+    // this.state.posts
+    alert(id)
+    
+  }
   handleClick(value) {
     // alert(value);
+    // REST
     axios.delete(`${Settings.host}/posts/${value}`).then(res => {
-      console.log('d');
+      console.log('filering..!');
+    //this.filterPosts(value);
+    //筛选已经删除的这个　post
+    //修改　this.state.posts 里面删除一个　Post
+    this.filterPosts(value)
     })
   }
   render() {
