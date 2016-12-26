@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import map from 'lodash/fp/map';
 import axios from 'axios';
 import { Link } from 'react-router';
-import Settings from '../Settings'
+import Settings from '../Settings';
+import filter from 'lodash/fp/filter';
 
 export default class PostList extends Component {
   constructor() {
@@ -88,21 +89,28 @@ export default class PostList extends Component {
       console.log(this.state.posts);
     });
   }
-  filterPosts(id){
-    // this.state.posts
-    alert(id)
-    
-  }
-  handleClick(value) {
+  // filterPosts(id){
+  //   // this.state.posts
+  //   alert(id)
+  //
+  // }
+  handleClick(id) {
     // alert(value);
     // REST
-    axios.delete(`${Settings.host}/posts/${value}`).then(res => {
-      console.log('filering..!');
+    // axios.delete(`${Settings.host}/posts/${value}`).then(res => {
+    //   console.log('filering..!');
     //this.filterPosts(value);
     //筛选已经删除的这个　post
     //修改　this.state.posts 里面删除一个　Post
-    this.filterPosts(value)
-    })
+    // this.filterPosts(value)
+    console.log(this.state.posts);
+    console.log("posts...." + id);
+    const posts = filter((post) => {
+      return post._id !== id
+    },this.state.posts)
+
+    this.setState({posts : posts})
+
   }
   render() {
     const styles = this.getStyles();
@@ -112,7 +120,7 @@ export default class PostList extends Component {
           <div style={styles.title}>{post.title}</div>
           <Link to={`/posts/${post._id}`} style={styles.check}>CHECK</Link>
           <Link to={`/posts/${post._id}/edit`} style={styles.edit}>编辑</Link>
-          <Link to={``} style={styles.delete} onClick={this.handleClick.bind(this,post._id)}>删除</Link>
+          <span to={``} style={styles.delete} onClick={this.handleClick.bind(this,post._id)}>删除</span>
 
         </div>
       )
